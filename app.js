@@ -28,19 +28,21 @@ app.get('/', async(req, res) => {
     }
 });
 
-
+/*
 app.get('/:id', async(req, res) => {
     try {
         console.log("get a post request has arrived");
         const { id } = req.params;
         const posts = await pool.query(
-            "SELECT * FROM nodetable WHERE id=$1", [id]
+            "SELECT * FROM poststable WHERE id=$1", [id]
         );
         res.json(posts.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
 });
+
+*/
 
 app.get('/singlepost', (req, res) => {
     res.render('singlepost', { title: 'Single post' });
