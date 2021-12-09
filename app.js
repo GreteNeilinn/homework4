@@ -28,6 +28,7 @@ app.get('/', async(req, res) => {
     }
 });
 
+
 /*
 app.get('/:id', async(req, res) => {
     try {
@@ -41,12 +42,48 @@ app.get('/:id', async(req, res) => {
         console.error(err.message);
     }
 });
-
 */
 
+
+
 app.get('/singlepost', (req, res) => {
-    res.render('singlepost', { title: 'Single post' });
-});
+    try {
+        const id = req.params.id;
+        console.log(req.params.id);
+        console.log("get a single post request has arrived");
+        const posts = await pool.query(
+        "SELECT * FROM nodetable WHERE id = $1", [id]
+        );
+        res.render('singlepost', { posts: posts.rows[0] });
+        } catch (err) {
+        console.error(err.message);
+        }
+
+    });
+
+
+
+
+    app.delete('/posts/:id', async(req, res) => {
+        try {
+        console.log(req.params);
+        const { id } = req.params;
+        const post = req.body;
+        console.log("delete a post request has arrived");
+        const deletepost = await pool.query(
+        "DELETE FROM nodetable WHERE id = $1", [id]
+        );
+        res.redirect('posts');
+        } catch (err) {
+        console.error(err.message);
+        }
+       });
+       
+
+
+
+
+
 app.get('/addnewpost', (req, res) => {
     res.render('addnewpost');
 });
