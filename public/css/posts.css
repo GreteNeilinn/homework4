@@ -28,7 +28,19 @@ body {
     box-shadow: 2px 2px 20px 10px darkgrey;
 }
 
-a {
+nav {
+    align-content: space-between !important;
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #424242;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.singlepost {
     color: white;
     margin: 0px 40px 40px 40px;
     display: flex;
@@ -59,9 +71,9 @@ h5 {
 }
 
 span {
-    float: right;
-    width: 30px;
-    border: 3px solid #73ad21;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ff859a;
 }
 
 .bottom-part {

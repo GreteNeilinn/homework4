@@ -10,58 +10,58 @@
 
 <body>
 
-    <div class="header"></div>
+    <%- include('../partials/navbar.ejs') %>
 
-    <section class="content" style="padding-top: 40px">
-        <% if (posts.length > 0) { %>
-            <% posts.forEach(post => { %>
+        <section class="content" style="padding-top: 40px">
+            <% if (posts.length > 0) { %>
+                <% posts.forEach(post => { %>
 
-                <a class="singlepost" href="/singlepost/<%= post.id %>">
-                    <div class="header-section">
-                        <div class="header-section-1">
-                            <div class="site-logo">
-                                <img class="header-image" src="images/usericon.png" />
-                                <!--  add user pic src     -->
+                    <a class="singlepost" href="/singlepost/<%= post.id %>">
+                        <div class="header-section">
+                            <div class="header-section-1">
+                                <div class="site-logo">
+                                    <img class="header-image" src="images/usericon.png" />
+                                    <!--  add user pic src     -->
+                                </div>
+                            </div>
+                            <div class="header-section-2">
+                                <time><%= post.datetime %></time>
                             </div>
                         </div>
-                        <div class="header-section-2">
-                            <time><%= post.datetime %></time>
+
+                        <div class="middlepart">
+                            <% if (post.image.length > 0) { %>
+                                <img src="images/<%= post.image %>" width="100%" id="postImage" />
+                                <% } else { %>
+                                    <% } %>
+                                        <h5>
+                                            <%= post.title %>
+                                        </h5>
+                                        <% if (post.body.length > 0) { %>
+                                            <p>
+                                                <%= post.body %>
+                                            </p>
+                                            <% } else { %>
+                                                <% } %>
                         </div>
-                    </div>
 
-                    <div class="middlepart">
-                        <% if (post.image.length > 0) { %>
-                            <img src="images/<%= post.image %>" width="100%" id="postImage" />
-                            <% } else { %>
-                                <% } %>
-                                    <h5>
-                                        <%= post.title %>
-                                    </h5>
-                                    <% if (post.body.length > 0) { %>
-                                        <p>
-                                            <%= post.body %>
-                                        </p>
-                                        <% } else { %>
-                                            <% } %>
-                    </div>
-
-                    <div class="bottom-part">
-                        <div class="post-like">
-                            <img class="myimage" src="images/like1.png" alt="like" />
+                        <div class="bottom-part">
+                            <div class="post-like">
+                                <img class="myimage" src="images/like1.png" alt="like" />
+                            </div>
+                            <div class="nrOfLikes">
+                                <p>0</p>
+                            </div>
                         </div>
-                        <div class="nrOfLikes">
-                            <p>0</p>
-                        </div>
-                    </div>
-                </a>
+                    </a>
 
-                <% }) %>
-                    <% } else { %>
-                        <p>You did not post anything!</p>
-                        <% } %>
-    </section>
+                    <% }) %>
+                        <% } else { %>
+                            <p>You did not post anything!</p>
+                            <% } %>
+        </section>
 
-    <div class="footer"></div>
+        <%- include('../partials/footer.ejs') %>
 </body>
 
 </html>
