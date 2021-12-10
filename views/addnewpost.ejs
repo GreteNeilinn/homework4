@@ -8,7 +8,22 @@
 </head>
 
 <body>
-    <h1>About</h1>
+ 
+    <div class= "container">
+       
+    <h1>Add new post here: </h1>
+    <form action="post">
+        
+<input  id='inputTime' name='time' type='hidden'> 
+<form method="post" action="/config/index.htm" onsubmit=" 
+document.getElementById('inputTime').value=new Date().toJSON().slice(0,16);btn=document.getElementById('button'); btn.value='(please wait)'; btn.disabled = true;" style="width: 1000px">
+        <input type="text" name="title" placeholder="Title"><br>
+        <textarea name="body" cols="40" rows="12" placeholder="Body"></textarea><br>
+        <button type="button" id="send">Send</button>
+       </form>
+
+          
+</div>
 </body>
 
 </html>
