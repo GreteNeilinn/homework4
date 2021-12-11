@@ -15,8 +15,8 @@
 
         <br>
         <div class="create-post">
-            <form action="/addnewpost" method="POST">
-
+            <form action="/addnewpost" method="POST" >
+<div class="formA">
                 <input id="ide" name="ide" type="hidden"><br><br>
 
                 <input id='datetime' name='datetime' type='hidden'>
@@ -24,9 +24,11 @@
                 <input type="text" id="title" name="title" required><br><br>
                 <label for="body">Post body:</label>
                 <input type="text" id="body" name="body" required><br><br>
+                <button id="btn">Submit</button>
                 <input type="hidden" value='' id="image" name="image"></textarea><br><br>
                 <input type="hidden" value='0' id="likes" name="likes"></textarea><br><br>
-                <button id="btn">Submit</button>
+               
+            </div>
             </form>
         </div>
         <%- include('../partials/footer.ejs') %>
