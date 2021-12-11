@@ -23,21 +23,21 @@
             </div>
         </div>
         <div class="header-section-2">
-            <time><%= post.datetime %></time>
+            <time><%= posts.datetime %></time>
         </div>
     </div>
 
     <div class="middlepart">
-        <% if (post.image.length > 0) { %>
+        <% if (posts.image.length > 0) { %>
             <img src="images/<%= post.image %>" width="100%" id="postImage" />
             <% } else { %>
                 <% } %>
                     <h5>
-                        <%= post.title %>
+                        <%= posts.title %>
                     </h5>
-                    <% if (post.body.length > 0) { %>
+                    <% if (posts.body.length > 0) { %>
                         <p>
-                            <%= post.body %>
+                            <%= posts.body %>
                         </p>
                         <% } else { %>
                             <% } %>
@@ -49,7 +49,7 @@
         </div>
         <div class="nrOfLikes">
             <p>
-                <%= post.likes %>
+                <%= posts.likes %>
             </p>
         </div>
     </div>

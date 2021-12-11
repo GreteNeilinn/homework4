@@ -62,7 +62,7 @@ app.get('/:id', async(req, res) => {
 */
 
 
-app.get('/singlepost', async(req, res) => {
+app.get('/singlepost/:id', async(req, res) => {
     try {
         const id = req.params.id;
         console.log(req.params.id);
