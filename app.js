@@ -23,9 +23,23 @@ app.get('/posts', async(req, res) => {
     try {
         console.log("get posts request has arrived");
         const posts = await pool.query(
-            "SELECT * FROM poststable"
+            "SELECT * FROM poststable ORDER BY id"
         );
         res.render('posts', { posts: posts.rows });
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+app.put('/posts/:id/:likes', async(req, res) => {
+    try {
+        console.log("update request has arrived");
+        const id = req.params.id;
+        let nrOfLikes = parseInt(req.params.likes) + 1;
+        const updatepost = await pool.query(
+            'UPDATE poststable SET likes = $1 WHERE id = $2', [nrOfLikes, id]
+        );
+        res.send('Success');
     } catch (err) {
         console.error(err.message);
     }
