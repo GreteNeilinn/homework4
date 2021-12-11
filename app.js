@@ -93,19 +93,29 @@ app.delete('/posts/:id', async(req, res) => {
 });
 app.post('/addnewpost', async(req, res) => {
     try {
-    //const datetime = document.getElementById('inputTime').value=new Date().toJSON().slice(0,16)
-    console.log("a post request has arrived");
-    const { datetime, title, body, image, likes } = req.body;
-    //const post = req.body;
-    const newpost = await pool.query(
-    "INSERT INTO poststable (datetime, title, body, image, likes) values ($1, $2, $3, $4, $5) RETURNING*", [post.datetime, post.title, post.body, post.image, post.likes]
-    );
-    //res.json( newpost );
-    res.json(newpost);
+        const post = req.body;
+        console.log(post);
+        const newpost = await pool.query(
+            "INSERT INTO poststable(datetime, title, body, image, likes) values ($1, $2, $3, $4, $5) RETURNING * ", [post.datetime, post.title, post.body, post.image, post.likes]
+        );
+        res.redirect('posts');
+
     } catch (err) {
-    console.error(err.message);
+        console.error(err.message);
     }
-   });
+});
+
+
+/*
+   //const datetime = document.getElementById('inputTime').value=new Date().toJSON().slice(0,16)
+   console.log("a post request has arrived");
+   const { datetime, title, body, image, likes } = req.body;
+   //const post = req.body;
+   const newpost = await pool.query(
+   "INSERT INTO poststable (datetime, title, body, image, likes) values ($1, $2, $3, $4, $5) RETURNING*", [post.datetime, post.title, post.body, post.image, post.likes]
+   );
+   //res.json( newpost );
+   res.json(newpost);*/
 
 app.get('/addnewpost', (req, res) => {
     res.render('addnewpost');
@@ -116,5 +126,5 @@ app.use((req, res) => {
 });
 
 //app.post('/addnewpost', function(req, res) {
-  //  return res.redirect('addnewpost');
+//  return res.redirect('addnewpost');
 //});
