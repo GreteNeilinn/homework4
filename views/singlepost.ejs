@@ -12,49 +12,50 @@
 
     <%- include('../partials/navbar.ejs') %>
 
-        <article class="singlepost">
-            <div class="header-section">
-                <div class="header-section-1">
-                    <div class="site-logo">
-                        <img class="header-image" src="/images/usericon.png" />
-                        <!--  add user pic src     -->
+        <section class="content">
+            <article class="singlepost" style="margin-top: 40px;">
+                <div class="header-section">
+                    <div class="header-section-1">
+                        <div class="site-logo">
+                            <img class="header-image" src="/images/usericon.png" />
+                            <!--  add user pic src     -->
+                        </div>
+                    </div>
+                    <div class="header-section-2">
+                        <time><%= posts.datetime %></time>
                     </div>
                 </div>
-                <div class="header-section-2">
-                    <time><%= posts.datetime %></time>
+
+                <div class="middlepart">
+                    <% if (posts.image.length > 0) { %>
+
+                        <img src="/images/<%= posts.image %>" width="100%" id="postImage" />
+                        <% } else { %>
+                            <% } %>
+                                <h5>
+                                    <%= posts.title %>
+                                </h5>
+                                <% if (posts.body.length > 0) { %>
+                                    <p>
+                                        <%= posts.body %>
+                                    </p>
+                                    <% } else { %>
+                                        <% } %>
                 </div>
-            </div>
 
-            <div class="middlepart">
-                <% if (posts.image.length > 0) { %>
-
-                    <img src="/images/<%= posts.image %>" width="100%" id="postImage" />
-                    <% } else { %>
-                        <% } %>
-                            <h5>
-                                <%= posts.title %>
-                            </h5>
-                            <% if (posts.body.length > 0) { %>
-                                <p>
-                                    <%= posts.body %>
-                                </p>
-                                <% } else { %>
-                                    <% } %>
-            </div>
-
-            <div class="bottom-part">
-                <div class="post-like">
-                    <img class="myimage" src="images/like1.png" alt="like" />
+                <div class="bottom-part">
+                    <div class="nrOfLikes">
+                        <p>
+                            Likes:
+                            <%= posts.likes %>
+                        </p>
+                    </div>
                 </div>
-                <div class="nrOfLikes">
-                    <p>
-                        <%= posts.likes %>
-                    </p>
-                </div>
+            </article>
+            <div class="deleteContainer">
+                <a class="delete" data-del="<%= posts.id %>">Delete</a>
             </div>
-
-            <a class="delete" data-del="<%= posts.id %>">Delete</a>
-        </article>
+        </section>
         <%- include('../partials/footer.ejs') %>
             <script>
                 const delreq = document.querySelector('a.delete');
