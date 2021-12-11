@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="nrOfLikes">
-                                <p>
+                                <p id="id<%= post.id %>">
                                     <%= post.likes %>
                                 </p>
                             </div>
@@ -74,6 +74,8 @@
                 function likePost(tag) {
                     let id = $(tag).attr('data-id');
                     let likes = $(tag).attr('data-likes');
+                    let likesId = 'id' + id
+                    document.getElementById(likesId).innerHTML = parseInt(likes) + 1;
                     const endpoint = `/posts/` + id + `/` + likes;
                     fetch(endpoint, {
                         method: 'PUT',
