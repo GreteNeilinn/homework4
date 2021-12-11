@@ -61,20 +61,18 @@ app.get('/:id', async(req, res) => {
 
 */
 
-
-app.get('/singlepost', async(req, res) => {
+app.get('/singlepost/:id', async(req, res) => {
     try {
         const id = req.params.id;
-        console.log(req.params.id);
         console.log("get a single post request has arrived");
         const posts = await pool.query(
             "SELECT * FROM poststable WHERE id = $1", [id]
         );
+        console.log(posts.rows[0]);
         res.render('singlepost', { posts: posts.rows[0] });
     } catch (err) {
         console.error(err.message);
     }
-
 });
 
 app.delete('/posts/:id', async(req, res) => {

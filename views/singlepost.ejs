@@ -4,85 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/posts.css">
+    <link rel="stylesheet" type="text/css" href="/css/posts.css">
     <title>Single Post</title>
 </head>
 
 <body>
 
-
     <%- include('../partials/navbar.ejs') %>
 
-
-        <section class="content" style="padding-top: 40px">
+        <article class="singlepost">
             <div class="header-section">
                 <div class="header-section-1">
                     <div class="site-logo">
-                        <img class="header-image" src="images/usericon.png" />
+                        <img class="header-image" src="/images/usericon.png" />
                         <!--  add user pic src     -->
                     </div>
                 </div>
                 <div class="header-section-2">
-                    <time><%= post.datetime %></time>
+                    <time><%= posts.datetime %></time>
                 </div>
             </div>
 
             <div class="middlepart">
-                <% if (post.image.length > 0) { %>
-                    <img src="images/<%= post.image %>" width="100%" id="postImage" />
+                <% if (posts.image.length > 0) { %>
+                    <img src="/images/<%= posts.image %>" width="100%" id="postImage" />
                     <% } else { %>
                         <% } %>
                             <h5>
-                                <%= post.title %>
+                                <%= posts.title %>
                             </h5>
-                            <% if (post.body.length > 0) { %>
+                            <% if (posts.body.length > 0) { %>
                                 <p>
-                                    <%= post.body %>
+                                    <%= posts.body %>
                                 </p>
                                 <% } else { %>
                                     <% } %>
             </div>
 
             <div class="bottom-part">
-                <div class="post-like">
-                    <img class="myimage" src="images/like1.png" alt="like" />
-                </div>
-                <div class="nrOfLikes">
-                    <p>
-                        <%= post.likes %>
-                    </p>
-                </div>
+
+                <a class="delete" data-del="<%= posts.id %>">Delete</a>
             </div>
-
-        </section>
-
-
-
-        <a class="delete" data-del="<%= posts.id %>">Delete</a>
-        </div>
-        <script>
-            const delreq = document.querySelector('a.delete');
-            delreq.addEventListener('click', (e) => {
-                const endpoint = `/posts/${delreq.dataset.del}`;
-                fetch(endpoint, {
-                    method: 'DELETE',
-                }).then(window.location.href = '/posts')
-            });
-        </script>
-
-
-
-
-
+        </article>
         <%- include('../partials/footer.ejs') %>
-
-
-
-
-
-
-
-
+            <script>
+                const delreq = document.querySelector('a.delete');
+                delreq.addEventListener('click', (e) => {
+                    const endpoint = `/posts/${delreq.dataset.del}`;
+                    fetch(endpoint, {
+                        method: 'DELETE',
+                    }).then(window.location.href = '/posts')
+                });
+            </script>
 </body>
 
 </html>
