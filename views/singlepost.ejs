@@ -4,24 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/posts.css">
+    <title>Single Post</title>
 </head>
 
 <body>
 
 
-    <%- include('partials/header') %>
+    <%- include('../partials/navbar.ejs') %>
 
 
-        <div class="singlepost">
-            <h2>
-                <%= posts.title %>
-            </h2>
-            <div class="content">
-                <p>
-                    <%= posts.body %>
-                </p>
+    <section class="content" style="padding-top: 40px">
+    <div class="header-section">
+        <div class="header-section-1">
+            <div class="site-logo">
+                <img class="header-image" src="images/usericon.png" />
+                <!--  add user pic src     -->
             </div>
+        </div>
+        <div class="header-section-2">
+            <time><%= post.datetime %></time>
+        </div>
+    </div>
+
+    <div class="middlepart">
+        <% if (post.image.length > 0) { %>
+            <img src="images/<%= post.image %>" width="100%" id="postImage" />
+            <% } else { %>
+                <% } %>
+                    <h5>
+                        <%= post.title %>
+                    </h5>
+                    <% if (post.body.length > 0) { %>
+                        <p>
+                            <%= post.body %>
+                        </p>
+                        <% } else { %>
+                            <% } %>
+    </div>
+
+    <div class="bottom-part">
+        <div class="post-like">
+            <img class="myimage" src="images/like1.png" alt="like" />
+        </div>
+        <div class="nrOfLikes">
+            <p>
+                <%= post.likes %>
+            </p>
+        </div>
+    </div>
+
+</section>
+
+
+
             <a class="delete" data-del="<%= posts.id %>">Delete</a>
         </div>
         <script>
@@ -38,7 +74,7 @@
 
 
 
-        <%- include('partials/footer') %>
+<%- include('../partials/footer.ejs') %>
 
 
 
