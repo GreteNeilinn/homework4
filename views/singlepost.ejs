@@ -27,6 +27,7 @@
 
             <div class="middlepart">
                 <% if (posts.image.length > 0) { %>
+
                     <img src="/images/<%= posts.image %>" width="100%" id="postImage" />
                     <% } else { %>
                         <% } %>
@@ -42,9 +43,17 @@
             </div>
 
             <div class="bottom-part">
-
-                <a class="delete" data-del="<%= posts.id %>">Delete</a>
+                <div class="post-like">
+                    <img class="myimage" src="images/like1.png" alt="like" />
+                </div>
+                <div class="nrOfLikes">
+                    <p>
+                        <%= posts.likes %>
+                    </p>
+                </div>
             </div>
+
+            <a class="delete" data-del="<%= posts.id %>">Delete</a>
         </article>
         <%- include('../partials/footer.ejs') %>
             <script>
