@@ -1,29 +1,34 @@
 <html lang="en">
 
 <head>
+  <html lang="en">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title> Create a post</title>
 </head>
-
 <body>
+  <h1>Create a post</h1>
+  <%- include('../partials/navbar.ejs') %>
  
-    <div class= "container">
-       
-    <h1>Add new post here: </h1>
-    <form action="post">
-        
-<input  id='inputTime' name='time' type='hidden'> 
-<form method="post" action="/config/index.htm" onsubmit=" 
-document.getElementById('inputTime').value=new Date().toJSON().slice(0,16);btn=document.getElementById('button'); btn.value='(please wait)'; btn.disabled = true;" style="width: 1000px">
-        <input type="text" name="title" placeholder="Title"><br>
-        <textarea name="body" cols="40" rows="12" placeholder="Body"></textarea><br>
-        <button type="button" id="send">Send</button>
-       </form>
+  <br>
+  <div class="create-post">
+  <form action="/addnewpost" method="POST">
+    <input  id='datetime' name='datetime' type='hidden' value=new Date().toJSON().slice(0,16)> 
+  <label for="title">Post title:</label>
+  <input type="text" id="title" name="title" required><br><br>
+  <label for="body">Post body:</label>
+  <input type="text" id="body" name="body" required><br><br>
+ 
+  <input type="hidden" value='' id="image" name="image"></textarea><br><br>
+  
+  <input type="hidden" value='0' id="likes" name="likes"></textarea><br><br>
+  <button>Submit</button>
+  </form>
+  </div>
+  <%- include('../partials/footer.ejs') %>
+ </body>
 
-          
-</div>
-</body>
 
 </html>
+
