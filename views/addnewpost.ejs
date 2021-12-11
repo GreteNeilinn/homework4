@@ -42,13 +42,7 @@
     function time() {
         //const number = new Math.floor(Math.random() * 100);
         // document.getElementById('id').value = number;
-        document.getElementById('datetime').value = new Date().toJSON().slice(0, 16); //s1 is the id of html button
+        document.getElementById('datetime').value = new Date().toISOString().slice(0, 10); //s1 is the id of html button
     };
     time();
-    //function test(){
-    //var randNumber = Math.floor(Math.random() * 100);4
-    //document.getElementById('id').value = 99;
-    // document.getElementById('id').value = new Math.floor(Math.random() * 100);//s1 is the id of html button
-    //};
-    //test();
 </script>
