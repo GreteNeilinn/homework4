@@ -46,12 +46,13 @@
                         </div>
 
                         <div class="bottom-part">
+
                             <div class="post-like">
-                                <!-- data-id="<%= post.id %>" data-likes="<%= post.likes %>"  -->
-                                <a class="likePost" data-id="<%= post.id %>" data-likes="<%= post.likes %>">
+                                <button class="likePost" onclick="likePost(this)" data-id="<%= post.id %>" data-likes="<%= post.likes %>">
                                     <img class="myimage" src="images/like1.png" alt="like" />
-                                </a>
+                                </button>
                             </div>
+
                             <div class="nrOfLikes">
                                 <p>
                                     <%= post.likes %>
@@ -70,28 +71,15 @@
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script type="text/javascript">
-                /*
-
-                                                                                let putpost = document.querySelector('a.likePost');
-                                                                            putpost.addEventListener('click', (e) => {
-                                                                                const endpoint = `/posts/${putpost.dataset.id}/${putpost.dataset.likes}`;
-                                                                                fetch(endpoint, {
-                                                                                    method: 'PUT',
-                                                                                }).then(window.Location.href = '/posts')
-                                                                            });
-
-                                                                                */
-                $('.likePost').click(function() {
-                    let id = $(this).data('id');
-                    let likes = $(this).data('likes');
-                    $.ajax({
-                        type: 'PUT',
-                        url: '/posts/' + id + '/' + likes,
-                        success: function() {
-                            window.Location.href = '/posts';
-                        },
-                    });
-                });
+                function likePost(tag) {
+                    let id = $(tag).attr('data-id');
+                    let likes = $(tag).attr('data-likes');
+                    const endpoint = `/posts/` + id + `/` + likes;
+                    fetch(endpoint, {
+                        method: 'PUT',
+                    }).then(window.Location.href = '/posts')
+                    tag.disabled = true;
+                }
             </script>
 </body>
 

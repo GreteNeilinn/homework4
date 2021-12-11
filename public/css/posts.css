@@ -84,23 +84,24 @@ span {
     width: 100%;
 }
 
+.likePost {
+    cursor: pointer;
+    height: 40px;
+    width: 45px;
+    background-color: #555;
+    border-radius: 10px;
+}
+
+.likePost:disabled {
+    cursor: default;
+}
+
 .post-like {
     display: inline-flex;
     justify-content: center;
     width: 44px;
     margin-top: 10px;
     padding: 4px;
-    background-color: #424242;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 10px -4px #242424;
-    transition: all 0.1s linear;
-    cursor: pointer;
-}
-
-.post-like:hover {
-    box-shadow: 6px 6px 10px -4px #242424;
 }
 
 .nrOfLikes {
