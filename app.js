@@ -94,7 +94,7 @@ app.post('/addnewpost', async(req, res) => {
         const post = req.body;
         console.log(post);
         const newpost = await pool.query(
-            "INSERT INTO poststable(datetime, title, body, image, likes) values ($1, $2, $3, $4, $5) RETURNING * ", [post.datetime, post.title, post.body, post.image, post.likes]
+            "INSERT INTO poststable(id, datetime, title, body, image, likes) values ((SELECT COUNT(poststable.id) FROM poststable)+2, $1, $2, $3, $4, $5) RETURNING * ", [post.datetime, post.title, post.body, post.image, post.likes]
         );
         res.redirect('posts');
 
