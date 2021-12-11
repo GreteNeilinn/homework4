@@ -81,7 +81,8 @@ app.post('/addnewpost', async(req, res) => {
     try {
     //const datetime = document.getElementById('inputTime').value=new Date().toJSON().slice(0,16)
     console.log("a post request has arrived");
-    const post = req.body;
+    const { datetime, title, body, image, likes } = req.body;
+    //const post = req.body;
     const newpost = await pool.query(
     "INSERT INTO poststable (datetime, title, body, image, likes) values ($1, $2, $3, $4, $5) RETURNING*", [post.datetime, post.title, post.body, post.image, post.likes]
     );
